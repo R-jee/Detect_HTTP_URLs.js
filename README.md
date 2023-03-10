@@ -56,13 +56,15 @@ function() {
 
     console.log("Shopify Product URL  ::  "+ unescape(decodeURI(document.location.href)) + "");
     let prod_url = window.location.href;
-    if(prod_url.includes('?')){
-        const params = new URLSearchParams(window.location.search);
-        if(params.get("variant")){
-            const variantID = params.get("variant");
-            console.log("Shopify Product variant ID  ::  "+ unescape(decodeURI(variantID)) +"");
+        if(prod_url.includes('?')){
+            const params = new URLSearchParams(window.location.search);
+            if(params.get("variant")){
+                const variantID = params.get("variant");
+                console.log("Shopify Product variant ID  ::  "+ unescape(decodeURI(variantID)) +"");
+            }else{
+                console.log("Shopify Product ID  ::  "+ unescape(decodeURI(document.getElementsByClassName("product-single__sku")[0].innerText)) +"");
+            }
         }
-    }
     {{ product.selected_variant.id }}
     if( found_URLs == 0 ){
         console.log("No HTTP URLs Found");
